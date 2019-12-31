@@ -1,12 +1,16 @@
-/* TODO */
-
-.flexit{
+.login-flex{
     display: flex;
-    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    margin: 5rem;
+
+}
+.login-flex .btn, .login-flex input{
+    padding: 0 10rem;
+    text-align: left;
     
 }
-.flexit div{
-    align-self: center;
-    justify-self: center;
+.login-flex .btn{
+    padding: 0.5rem 15rem;
+    margin-top: 2rem;
 }
