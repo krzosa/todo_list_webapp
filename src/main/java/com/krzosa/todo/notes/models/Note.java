@@ -12,6 +12,7 @@ public class Note {
     private String note;
     private String color;
     @ManyToOne
+    @JoinColumn
     private User user;
 
     public Note() {

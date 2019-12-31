@@ -15,7 +15,7 @@ public class User {
     public String username;
     public String password;
     @OneToMany
-    List<Note> notes;
+    public List<Note> notes;
 
     public User() {
     }
@@ -26,6 +26,18 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
+    }
+
+    public void addNotes(Note note){
+        notes.add(note);
     }
 
     public User(String username, String password) {

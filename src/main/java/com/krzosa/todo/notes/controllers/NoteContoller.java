@@ -1,5 +1,6 @@
 package com.krzosa.todo.notes.controllers;
 
+import com.krzosa.todo.login.User;
 import com.krzosa.todo.notes.NoteOperation;
 import com.krzosa.todo.notes.NoteRepository;
 import com.krzosa.todo.login.UserRepository;
@@ -37,10 +38,14 @@ public class NoteContoller {
     }
     @GetMapping(value="/submit-note")
     public String submitNote(@RequestParam String note, @RequestParam String colorSelect, Principal principal){
+        User user = userRepository.findByUsername(principal.getName());
         //Note (NOTE, COLOR, USER)
-        noteRepository.save(new Note(note,
+        Note Nnote = new Note(note,
                 colorSelect,
-                userRepository.findByUsername(principal.getName())));
+                userRepository.findByUsername(principal.getName()));
+
+        user.addNotes(Nnote);
+        noteRepository.save(Nnote);
         return "todo";
     }
 }
