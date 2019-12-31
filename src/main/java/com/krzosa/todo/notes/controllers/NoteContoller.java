@@ -27,11 +27,9 @@ public class NoteContoller {
 
         return "todoNote";
     }
-    //todo: delete error
+    //todo: delete error, or actually add error
     @PostMapping(value="/delete-btn")
-    public String deleteButton(@RequestParam Integer id, Principal principal){
-        User user = userRepository.findByUsername(principal.getName());
-
+    public String deleteButton(@RequestParam Integer id){
         noteRepository.deleteById(id);
         return "todo";
     }
@@ -49,7 +47,6 @@ public class NoteContoller {
                 colorSelect,
                 userRepository.findByUsername(principal.getName()));
 
-        user.addNote(Nnote);
         noteRepository.save(Nnote);
         return "todoNote";
     }
