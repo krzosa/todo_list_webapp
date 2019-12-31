@@ -1,10 +1,10 @@
 package com.krzosa.todo.login;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.krzosa.todo.notes.models.Note;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -14,6 +14,8 @@ public class User {
     @Column(nullable = false, unique = true)
     public String username;
     public String password;
+    @OneToMany
+    List<Note> notes;
 
     public User() {
     }

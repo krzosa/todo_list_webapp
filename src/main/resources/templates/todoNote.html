@@ -24,24 +24,22 @@
     </nav>
     <div class="container">
         
-        <form class="">
+        <form th:action="@{/submit-note}" method="get">
             <div class="form-group">
                 <label for="note" class="mt-4">Note</label>
                 <input type="text" class="form-control" id="note" name="note">
             </div>
             <div class="form-group">
                 <label for="colorSelect">Select note's color</label>
-                <select multiple class="form-control" id="colorSelect">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <select multiple class="form-control" id="colorSelect" name="colorSelect">
+                    <option value="list-group-item" selected>WHITE</option>
+                    <option value="list-group-item-danger">RED</option>
+                    <option value="list-group-item-success">GREEN</option>
+                    <option value="list-group-item-primary">BLUE</option>
+                    <option value="list-group-item-secondary">GREY</option>
                 </select>
             </div>
-            <form th:action="@{/submit-note}" method="post">
                 <input type="submit" value="Submit" class="btn btn-primary mt-4">
-            </form>
             </form>
     </div>
     

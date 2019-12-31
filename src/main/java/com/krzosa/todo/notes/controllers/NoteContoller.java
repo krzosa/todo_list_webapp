@@ -37,7 +37,10 @@ public class NoteContoller {
     }
     @GetMapping(value="/submit-note")
     public String submitNote(@RequestParam String note, @RequestParam String colorSelect, Principal principal){
-        noteRepository.save(new Note(note, colorSelect, userRepository.findByUsername(principal.getName())));
+        //Note (NOTE, COLOR, USER)
+        noteRepository.save(new Note(note,
+                colorSelect,
+                userRepository.findByUsername(principal.getName())));
         return "todo";
     }
 }
