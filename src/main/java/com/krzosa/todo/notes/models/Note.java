@@ -4,8 +4,6 @@ import com.krzosa.todo.login.User;
 
 import javax.persistence.*;
 
-//todo: delete user from here?
-
 @Entity
 public class Note {
     @Id
