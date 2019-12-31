@@ -1,9 +1,7 @@
 package com.krzosa.todo.login;
 
 
-import com.krzosa.todo.notes.NoteRepository;
 import com.krzosa.todo.notes.models.Note;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,8 +16,6 @@ public class User {
     @Column(nullable = false, unique = true)
     public String username;
     public String password;
-    @OneToMany
-    public List<Note> notes;
 
     public User() {
     }
@@ -32,24 +28,6 @@ public class User {
         this.id = id;
     }
 
-    public List<Note> getNotes() {
-        return notes;
-    }
-
-    public void setNotes(List<Note> notes) {
-        this.notes = notes;
-    }
-
-    public void addNote(Note note){
-        notes.add(note);
-    }
-    public void deleteNote(Integer id){
-        for (int i=0;i< notes.size();i++) {
-            if(notes.get(i).getId()==id){
-                notes.remove(id);
-            }
-        }
-    }
 
     public User(String username, String password) {
         this.username = username;
