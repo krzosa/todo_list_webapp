@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
@@ -23,17 +24,21 @@ public class NoteContoller {
 
     @GetMapping(value="/add-btn")
     public String addButton(Model model){
-        model.addAttribute(NoteOperation.ADD);
+
         return "todoNote";
     }
-    @GetMapping(value="/delete-btn")
-    public String deleteButton(){
-        //here I have to somehow pass the id of the note, i think
+    //todo: delete error
+    @PostMapping(value="/delete-btn")
+    public String deleteButton(@RequestParam Integer id, Principal principal){
+        User user = userRepository.findByUsername(principal.getName());
+
+        noteRepository.deleteById(id);
         return "todo";
     }
     @GetMapping(value="/edit-btn")
-    public String editButton(){
-
+    public String editButton(Model model){
+        //todo delete enum and just send the id
+        model.addAttribute(NoteOperation.EDIT);
         return "todoNote";
     }
     @GetMapping(value="/submit-note")
@@ -44,8 +49,8 @@ public class NoteContoller {
                 colorSelect,
                 userRepository.findByUsername(principal.getName()));
 
-        user.addNotes(Nnote);
+        user.addNote(Nnote);
         noteRepository.save(Nnote);
-        return "todo";
+        return "todoNote";
     }
 }

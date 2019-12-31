@@ -4,6 +4,8 @@ import com.krzosa.todo.login.User;
 
 import javax.persistence.*;
 
+//todo: delete user from here?
+
 @Entity
 public class Note {
     @Id
@@ -21,6 +23,14 @@ public class Note {
         this.note = note;
         this.color = color;
         this.user = user;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNote() {

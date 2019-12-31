@@ -1,7 +1,9 @@
 package com.krzosa.todo.login;
 
 
+import com.krzosa.todo.notes.NoteRepository;
 import com.krzosa.todo.notes.models.Note;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;
@@ -36,8 +38,15 @@ public class User {
         this.notes = notes;
     }
 
-    public void addNotes(Note note){
+    public void addNote(Note note){
         notes.add(note);
+    }
+    public void deleteNote(Integer id){
+        for (int i=0;i< notes.size();i++) {
+            if(notes.get(i).getId()==id){
+                notes.remove(id);
+            }
+        }
     }
 
     public User(String username, String password) {
