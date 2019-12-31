@@ -1,6 +1,5 @@
-package com.krzosa.todo.notes.login;
+package com.krzosa.todo.login;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -1,4 +1,4 @@
-package com.krzosa.todo.notes.login;
+package com.krzosa.todo.login;
 
 
 import javax.persistence.Column;
@@ -16,6 +16,14 @@ public class User {
     public String password;
 
     public User() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User(String username, String password) {

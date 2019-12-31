@@ -1,4 +1,4 @@
-package com.krzosa.todo.notes.login;
+package com.krzosa.todo.login;
 
 import org.springframework.data.repository.Repository;
 

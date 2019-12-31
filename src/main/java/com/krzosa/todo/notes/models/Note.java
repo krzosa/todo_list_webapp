@@ -1,6 +1,6 @@
 package com.krzosa.todo.notes.models;
 
-import com.krzosa.todo.notes.login.User;
+import com.krzosa.todo.login.User;
 
 import javax.persistence.*;
 
