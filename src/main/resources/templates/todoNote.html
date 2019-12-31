@@ -13,7 +13,7 @@
         <div class="container">
             <h1><a th:href="@{/todo}" class="text-white">ToDo list</a></h1>
             <div class="navbar-nav">
-                <form th:action="@{/add}" class="" method="get">
+                <form th:action="@{/add-btn}" class="" method="get">
                     <input type="submit" value="Add a todo" class=" btn btn-primary nav-item">
                 </form>
                 <form th:action="@{/logout}" class="" method="post">
@@ -39,7 +39,7 @@
                 <option>5</option>
                 </select>
             </div>
-            <form th:action="@{/submitNote}" method="post">
+            <form th:action="@{/submit-note}" method="post">
                 <input type="submit" value="Submit" class="btn btn-primary mt-4">
             </form>
             </form>
