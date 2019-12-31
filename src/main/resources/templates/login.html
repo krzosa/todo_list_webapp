@@ -18,18 +18,17 @@
     </nav>
     <div class="container">
         <div class="login-flex">
-            <div th:if="${param.error}">
-                Invalid username or password
-            </div>
-            <div th:if="${param.logout}">
-                You have been logged out.
-            </div>
             <form th:action="@{/login}" class="form-group" method="post">
                 Username: <input type="text" name="username" class="form-control">
                 Password: <input type="password" name="password" class="form-control">
                 <input type="submit" value="Sign in" class="btn btn-primary">
-        
             </form>
+        </div>
+        <div th:if="${param.error}" class="text-center text-danger">
+            Invalid username or password
+        </div>
+        <div th:if="${param.logout}" class="text-center text-danger">
+            You have been logged out.
         </div>
     </div>
 </body>
