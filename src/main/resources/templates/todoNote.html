@@ -24,11 +24,11 @@
         </div>
     </nav>
     <div class="container">
-        
+
         <form th:action="@{/submit-note}" method="get">
             <div class="form-group">
                 <label for="note" class="mt-4">Note</label>
-                <input type="text" class="form-control" id="note" name="note" th:value="${NoteEdit.getNote()}">
+                <input type="text" class="form-control" id="note" name="note">
             </div>
             <div class="form-group">
                 <label for="colorSelect">Select note's color</label>
@@ -43,7 +43,7 @@
                 <input type="submit" value="Submit" class="btn btn-primary mt-4">
             </form>
     </div>
-    
+
 
 
 

@@ -22,6 +22,12 @@ public class Note {
         this.color = color;
         this.user = user;
     }
+    public Note(Integer id, String note, String color, User user) {
+        this.id = id;
+        this.note = note;
+        this.color = color;
+        this.user = user;
+    }
 
     public int getId() {
         return id;
