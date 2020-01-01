@@ -28,8 +28,6 @@ public class NoteContoller {
 
     @GetMapping(value="/add-btn")
     public String addButton(){
-
-
         return "todoNote";
     }
     @PostMapping(value="/delete-btn")
@@ -41,9 +39,10 @@ public class NoteContoller {
         return "/todo";
     }
     @GetMapping(value="/edit-btn")
-    public String editButton(Model model){
-        //todo delete enum and just send the id
+    public String editButton(@RequestParam Integer id, Model model){
+        Note noteEdit = noteRepository.findById(id).get();
 
+        model.addAttribute("NoteEdit", noteEdit);
         return "todoNote";
     }
     @GetMapping(value="/submit-note")

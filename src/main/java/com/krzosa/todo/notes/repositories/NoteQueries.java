@@ -7,6 +7,6 @@ import org.springframework.data.repository.Repository;
 import java.util.List;
 
 public interface NoteQueries extends Repository<Note, Integer> {
-    @Query("SELECT u FROM Note u where u.user.id = :#{#userId}")
+    @Query("SELECT u FROM Note u where u.user.id = :#{#userId} order by u.id desc")
     List<Note> NotesFromUserId(Integer userId);
 }

@@ -3,7 +3,6 @@ package com.krzosa.todo;
 import com.krzosa.todo.login.User;
 import com.krzosa.todo.login.UserRepository;
 import com.krzosa.todo.notes.repositories.NoteQueries;
-import com.krzosa.todo.notes.repositories.NoteRepository;
 import com.krzosa.todo.notes.models.Note;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +35,6 @@ public class TodoContoller {
     public String PassingNotesListPost(Model model, Principal principal){
         User user = userRepository.findByUsername(principal.getName());
         List<Note> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
-
 
         model.addAttribute(currentUsersNotes);
         return "todo";
