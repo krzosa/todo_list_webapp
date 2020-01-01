@@ -26,8 +26,6 @@ public class TodoContoller {
     public String PassingNotesListGet(Model model, Principal principal){
         User user = userRepository.findByUsername(principal.getName());
         List<Note> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
-
-
         model.addAttribute(currentUsersNotes);
         return "todo";
     }
@@ -35,7 +33,6 @@ public class TodoContoller {
     public String PassingNotesListPost(Model model, Principal principal){
         User user = userRepository.findByUsername(principal.getName());
         List<Note> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
-
         model.addAttribute(currentUsersNotes);
         return "todo";
     }

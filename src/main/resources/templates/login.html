@@ -17,19 +17,21 @@
         </div>
     </nav>
     <div class="container">
-        <div class="login-flex">
-            <form th:action="@{/login}" class="form-group" method="post">
+    <div class="container-small">
+        <div class="flex-column justify-content-center mt-xl-5">
+            <form th:action="@{/login}" class="form-group flex-column" method="post">
                 Username: <input type="text" name="username" class="form-control">
-                Password: <input type="password" name="password" class="form-control">
+                Password: <input type="password" name="password" class="form-control text-left">
                 <input type="submit" value="Sign in" class="btn btn-primary">
             </form>
         </div>
-        <div th:if="${param.error}" class="text-center text-danger">
+        <div th:if="${param.error}" class="text-center text-danger h4 mt-4">
             Invalid username or password
         </div>
-        <div th:if="${param.logout}" class="text-center text-danger">
+        <div th:if="${param.logout}" class="text-center text-danger h4 mt-4">
             You have been logged out.
         </div>
+    </div>
     </div>
 </body>
 </html>

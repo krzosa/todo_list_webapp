@@ -1,16 +1,12 @@
-.login-flex{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5rem;
+/*LOGIN*/
 
-}
-.login-flex .btn, .login-flex input{
-    padding: 0 10rem;
-    text-align: left;
-    
-}
-.login-flex .btn{
-    padding: 0.5rem 15rem;
+.container-small .btn{
+    align-self: center;
+    width: 100%;
     margin-top: 2rem;
+}
+.container-small{
+    width: 30%;
+    margin: auto;
+    margin-top: 4rem;
 }

@@ -12,7 +12,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/home", "/h2-console/**").permitAll() //delete h2
+                .antMatchers("/", "/home", "/h2-console/**").permitAll() //delete h2. for h2database access during development
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -22,8 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();
 
-        http.csrf().disable(); //delete this
-        http.headers().frameOptions().disable(); //delete this
+        http.csrf().disable(); //delete this. for h2database access during development
+        http.headers().frameOptions().disable(); //delete this. for h2database access during development
+        http.formLogin().defaultSuccessUrl("/todo");
     }
 
     //allowing access to the website resource files(bootstrap, css etc.).
