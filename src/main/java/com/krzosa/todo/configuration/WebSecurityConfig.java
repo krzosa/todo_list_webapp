@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-@EnableWebSecurity //TODO: usun zobacz co sie stanie
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll();
+                .permitAll().and().exceptionHandling().accessDeniedPage("/error");
 
         http.csrf().disable(); //delete this. for h2database access during development
         http.headers().frameOptions().disable(); //delete this. for h2database access during development

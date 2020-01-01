@@ -1,12 +1,6 @@
 package com.krzosa.todo.login;
 
-
-import com.krzosa.todo.notes.models.Note;
-
 import javax.persistence.*;
-import java.util.List;
-
-//todo: delete notes from user
 
 @Entity
 public class User {

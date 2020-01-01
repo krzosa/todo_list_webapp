@@ -41,13 +41,11 @@ public class NoteContoller {
     @GetMapping(value="/edit-btn")
     public String editButton(@RequestParam Integer id, Model model){
         Note noteEdit = noteRepository.findById(id).get();
-
         model.addAttribute("NoteEdit", noteEdit);
         return "todoNoteEdit";
     }
     @GetMapping(value="/submit-note")
     public String submitNote(@RequestParam String note, @RequestParam String colorSelect, Principal principal){
-        User user = userRepository.findByUsername(principal.getName());
         //Note (NOTE, COLOR, USER)
         Note Nnote = new Note(note,
                 colorSelect,
@@ -59,14 +57,13 @@ public class NoteContoller {
     @GetMapping(value="/submit-note-edit")
     public String submitNoteEdit(@RequestParam Integer id, @RequestParam String note, @RequestParam String colorSelect, Principal principal, Model model){
         //EDITING
-        User user = userRepository.findByUsername(principal.getName());
         Note Nnote = new Note(id, note, //Note (NOTE, COLOR, USER)
                 colorSelect,
                 userRepository.findByUsername(principal.getName()));
         noteRepository.save(Nnote);
 
-        //giving todo.html a list of all the notes of the current user
-        user = userRepository.findByUsername(principal.getName());
+        //giving a list of all user's notes to html file
+        User user = userRepository.findByUsername(principal.getName());
         List<Note> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
         model.addAttribute(currentUsersNotes);
         return "todo";

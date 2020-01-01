@@ -12,7 +12,6 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
-    //todo password encoding
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
