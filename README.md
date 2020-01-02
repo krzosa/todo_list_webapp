@@ -45,3 +45,7 @@ are hard to debug.
 Having a ready template in the future is probably a good idea.
     * Indicators: Bootstrap layout not working properly on 
     mobile devices.
+1. Intellij has problems with Thymeleaf templates when passing
+variables to a template through a function. It has problems
+resolving the variables. It works fine when passing them directly
+in controller.

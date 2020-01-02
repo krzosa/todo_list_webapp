@@ -11,7 +11,11 @@ public class UserEntity {
     public String username;
     public String password;
 
-    public UserEntity() {
+    public UserEntity() { }
+
+    public UserEntity(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public int getId() {
@@ -20,12 +24,6 @@ public class UserEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-
-    public UserEntity(String username, String password) {
-        this.username = username;
-        this.password = password;
     }
 
     public String getUsername() {
