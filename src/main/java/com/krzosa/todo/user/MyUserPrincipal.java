@@ -1,4 +1,4 @@
-package com.krzosa.todo.login;
+package com.krzosa.todo.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,8 +7,8 @@ import java.util.Collection;
 
 public class MyUserPrincipal implements UserDetails {
 
-    User user;
-    public MyUserPrincipal(User user){
+    UserEntity user;
+    public MyUserPrincipal(UserEntity user){
         this.user = user;
 
     }

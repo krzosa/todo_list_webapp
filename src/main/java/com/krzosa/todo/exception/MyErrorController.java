@@ -1,4 +1,4 @@
-package com.krzosa.todo;
+package com.krzosa.todo.exception;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;

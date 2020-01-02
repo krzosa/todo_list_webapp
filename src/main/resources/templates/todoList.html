@@ -27,7 +27,7 @@
     </nav>
     <div class="container">
         <ul class="list-group">
-            <li th:each="note: ${noteList}" th:classappend="${note.getColor()}" class="list-group-item d-flex justify-content-between align-items-center">
+            <li th:each="note: ${noteEntityList}" th:classappend="${note.getColor()}" class="list-group-item d-flex justify-content-between align-items-center">
                 <span th:text="${note.getNote()}"></span>
                 <div class="row pull-right">
                     <form th:action="@{/edit-btn}" method="get">

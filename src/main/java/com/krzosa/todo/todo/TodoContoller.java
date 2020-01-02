@@ -1,9 +1,9 @@
-package com.krzosa.todo;
+package com.krzosa.todo.todo;
 
-import com.krzosa.todo.login.User;
-import com.krzosa.todo.login.UserRepository;
-import com.krzosa.todo.notes.repositories.NoteQueries;
-import com.krzosa.todo.notes.models.Note;
+import com.krzosa.todo.user.UserEntity;
+import com.krzosa.todo.user.UserRepository;
+import com.krzosa.todo.note.NoteQueries;
+import com.krzosa.todo.note.NoteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,16 +24,16 @@ public class TodoContoller {
 
     @GetMapping("/todo")
     public String PassingNotesListGet(Model model, Principal principal){
-        User user = userRepository.findByUsername(principal.getName());
-        List<Note> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
+        UserEntity user = userRepository.findByUsername(principal.getName());
+        List<NoteEntity> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
         model.addAttribute(currentUsersNotes);
-        return "todo";
+        return "todoList";
     }
     @PostMapping("/todo")
     public String PassingNotesListPost(Model model, Principal principal){
-        User user = userRepository.findByUsername(principal.getName());
-        List<Note> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
+        UserEntity user = userRepository.findByUsername(principal.getName());
+        List<NoteEntity> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
         model.addAttribute(currentUsersNotes);
-        return "todo";
+        return "todoList";
     }
 }

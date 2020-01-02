@@ -1,9 +1,9 @@
-package com.krzosa.todo.login;
+package com.krzosa.todo.user;
 
 import javax.persistence.*;
 
-@Entity
-public class User {
+@Entity(name = "User")
+public class UserEntity {
     @Id
     @GeneratedValue
     public int id;
@@ -11,7 +11,7 @@ public class User {
     public String username;
     public String password;
 
-    public User() {
+    public UserEntity() {
     }
 
     public int getId() {
@@ -23,7 +23,7 @@ public class User {
     }
 
 
-    public User(String username, String password) {
+    public UserEntity(String username, String password) {
         this.username = username;
         this.password = password;
     }

@@ -1,11 +1,11 @@
-package com.krzosa.todo.notes.models;
+package com.krzosa.todo.note;
 
-import com.krzosa.todo.login.User;
+import com.krzosa.todo.user.UserEntity;
 
 import javax.persistence.*;
 
-@Entity
-public class Note {
+@Entity(name="Note")
+public class NoteEntity {
     @Id
     @GeneratedValue
     private int id;
@@ -13,16 +13,16 @@ public class Note {
     private String color;
     @ManyToOne
     @JoinColumn
-    private User user;
+    private UserEntity user;
 
-    public Note() {
+    public NoteEntity() {
     }
-    public Note(String note, String color, User user) {
+    public NoteEntity(String note, String color, UserEntity user) {
         this.note = note;
         this.color = color;
         this.user = user;
     }
-    public Note(Integer id, String note, String color, User user) {
+    public NoteEntity(Integer id, String note, String color, UserEntity user) {
         this.id = id;
         this.note = note;
         this.color = color;
@@ -53,11 +53,11 @@ public class Note {
         this.color = color;
     }
 
-    public User getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 }

@@ -1,10 +1,10 @@
-package com.krzosa.todo.notes.controllers;
+package com.krzosa.todo.todo;
 
-import com.krzosa.todo.login.User;
-import com.krzosa.todo.notes.repositories.NoteQueries;
-import com.krzosa.todo.notes.repositories.NoteRepository;
-import com.krzosa.todo.login.UserRepository;
-import com.krzosa.todo.notes.models.Note;
+import com.krzosa.todo.note.NoteEntity;
+import com.krzosa.todo.note.NoteQueries;
+import com.krzosa.todo.note.NoteRepository;
+import com.krzosa.todo.user.UserEntity;
+import com.krzosa.todo.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +16,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-public class NoteContoller {
+public class TodoBtnController {
     @Autowired
     NoteRepository noteRepository;
 
@@ -28,44 +28,44 @@ public class NoteContoller {
 
     @GetMapping(value="/add-btn")
     public String addButton(){
-        return "todoNote";
+        return "todoNoteAdd";
     }
     @PostMapping(value="/delete-btn")
     public String deleteButton(@RequestParam Integer id, Model model, Principal principal){
         noteRepository.deleteById(id);
-        User user = userRepository.findByUsername(principal.getName());
-        List<Note> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
+        UserEntity user = userRepository.findByUsername(principal.getName());
+        List<NoteEntity> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
         model.addAttribute(currentUsersNotes);
-        return "/todo";
+        return "todoList";
     }
     @GetMapping(value="/edit-btn")
     public String editButton(@RequestParam Integer id, Model model){
-        Note noteEdit = noteRepository.findById(id).get();
+        NoteEntity noteEdit = noteRepository.findById(id).get();
         model.addAttribute("NoteEdit", noteEdit);
         return "todoNoteEdit";
     }
     @GetMapping(value="/submit-note")
     public String submitNote(@RequestParam String note, @RequestParam String colorSelect, Principal principal){
         //Note (NOTE, COLOR, USER)
-        Note Nnote = new Note(note,
+        NoteEntity nnote = new NoteEntity(note,
                 colorSelect,
                 userRepository.findByUsername(principal.getName()));
 
-        noteRepository.save(Nnote);
-        return "todoNote";
+        noteRepository.save(nnote);
+        return "todoNoteAdd";
     }
     @GetMapping(value="/submit-note-edit")
     public String submitNoteEdit(@RequestParam Integer id, @RequestParam String note, @RequestParam String colorSelect, Principal principal, Model model){
         //EDITING
-        Note Nnote = new Note(id, note, //Note (NOTE, COLOR, USER)
+        NoteEntity nnote = new NoteEntity(id, note, //Note (NOTE, COLOR, USER)
                 colorSelect,
                 userRepository.findByUsername(principal.getName()));
-        noteRepository.save(Nnote);
+        noteRepository.save(nnote);
 
         //giving a list of all user's notes to html file
-        User user = userRepository.findByUsername(principal.getName());
-        List<Note> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
+        UserEntity user = userRepository.findByUsername(principal.getName());
+        List<NoteEntity> currentUsersNotes = noteQueries.NotesFromUserId(user.getId());
         model.addAttribute(currentUsersNotes);
-        return "todo";
+        return "todoList";
     }
 }
