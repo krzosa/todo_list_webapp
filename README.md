@@ -20,6 +20,9 @@ and are retrieved when needed
 * Nice and very responsive website design created 98% using
 Bootstrap. CSS used only to tweak login page
 
+![img](https://github.com/krzosa/todo_list_webapp/blob/master/img.PNG)
+
+
 ## How to run
 1. Clone or download this repository
 1. cd into the repository
